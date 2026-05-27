@@ -1,0 +1,38 @@
+[2026-05-26T20:59:15.612+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-05-26T20:59:15.665+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: flight_ops_medallion_pipeline.bronze_ingest manual__2026-05-26T20:59:09.414467+00:00 [queued]>
+[2026-05-26T20:59:15.678+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: flight_ops_medallion_pipeline.bronze_ingest manual__2026-05-26T20:59:09.414467+00:00 [queued]>
+[2026-05-26T20:59:15.680+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 2
+[2026-05-26T20:59:15.698+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): bronze_ingest> on 2026-05-26 20:59:09.414467+00:00
+[2026-05-26T20:59:15.712+0000] {standard_task_runner.py:64} INFO - Started process 130 to run task
+[2026-05-26T20:59:15.716+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'flight_ops_medallion_pipeline', 'bronze_ingest', 'manual__2026-05-26T20:59:09.414467+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/flight_pipeline.py', '--cfg-path', '/tmp/tmpct97cl0g']
+[2026-05-26T20:59:15.720+0000] {standard_task_runner.py:91} INFO - Job 12: Subtask bronze_ingest
+[2026-05-26T20:59:15.846+0000] {task_command.py:426} INFO - Running <TaskInstance: flight_ops_medallion_pipeline.bronze_ingest manual__2026-05-26T20:59:09.414467+00:00 [running]> on host 8a16eb1c1007
+[2026-05-26T20:59:16.017+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='flight_ops_medallion_pipeline' AIRFLOW_CTX_TASK_ID='bronze_ingest' AIRFLOW_CTX_EXECUTION_DATE='2026-05-26T20:59:09.414467+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-05-26T20:59:09.414467+00:00'
+[2026-05-26T20:59:16.018+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-05-26T20:59:16.824+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-05-26T20:59:16.826+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/scripts/bronze_ingest.py", line 16, in run_bronze_ingestion
+    with open(path, "w") as f:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'opt/airflow/data/bronze/flights_26052026205916.json'
+[2026-05-26T20:59:16.853+0000] {taskinstance.py:1206} INFO - Marking task as UP_FOR_RETRY. dag_id=flight_ops_medallion_pipeline, task_id=bronze_ingest, run_id=manual__2026-05-26T20:59:09.414467+00:00, execution_date=20260526T205909, start_date=20260526T205915, end_date=20260526T205916
+[2026-05-26T20:59:17.070+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 12 for task bronze_ingest ([Errno 2] No such file or directory: 'opt/airflow/data/bronze/flights_26052026205916.json'; 130)
+[2026-05-26T20:59:17.099+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-05-26T20:59:17.153+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-05-26T20:59:17.160+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

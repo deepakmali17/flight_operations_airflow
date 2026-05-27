@@ -1,0 +1,39 @@
+[2026-05-27T09:51:37.567+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-05-27T09:51:37.612+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: flight_ops_medallion_pipeline.gold_aggregate manual__2026-05-27T09:51:18.770022+00:00 [queued]>
+[2026-05-27T09:51:37.623+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: flight_ops_medallion_pipeline.gold_aggregate manual__2026-05-27T09:51:18.770022+00:00 [queued]>
+[2026-05-27T09:51:37.625+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-05-27T09:51:37.641+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): gold_aggregate> on 2026-05-27 09:51:18.770022+00:00
+[2026-05-27T09:51:37.655+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'flight_ops_medallion_pipeline', 'gold_aggregate', 'manual__2026-05-27T09:51:18.770022+00:00', '--job-id', '44', '--raw', '--subdir', 'DAGS_FOLDER/flight_pipeline.py', '--cfg-path', '/tmp/tmp670lzuqe']
+[2026-05-27T09:51:37.663+0000] {standard_task_runner.py:91} INFO - Job 44: Subtask gold_aggregate
+[2026-05-27T09:51:37.663+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62 DeprecationWarning: This process (pid=453) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-05-27T09:51:37.664+0000] {standard_task_runner.py:64} INFO - Started process 470 to run task
+[2026-05-27T09:51:37.746+0000] {task_command.py:426} INFO - Running <TaskInstance: flight_ops_medallion_pipeline.gold_aggregate manual__2026-05-27T09:51:18.770022+00:00 [running]> on host f59e62180610
+[2026-05-27T09:51:37.880+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='flight_ops_medallion_pipeline' AIRFLOW_CTX_TASK_ID='gold_aggregate' AIRFLOW_CTX_EXECUTION_DATE='2026-05-27T09:51:18.770022+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-05-27T09:51:18.770022+00:00'
+[2026-05-27T09:51:37.881+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-05-27T09:51:37.917+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-05-27T09:51:37.918+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/scripts/gold_aggregate.py", line 9, in run_gold_aggregate
+    gold_path.mkdir(parents=True, exist_ok=True)
+    ^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'mkdir'
+[2026-05-27T09:51:37.940+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=flight_ops_medallion_pipeline, task_id=gold_aggregate, run_id=manual__2026-05-27T09:51:18.770022+00:00, execution_date=20260527T095118, start_date=20260527T095137, end_date=20260527T095137
+[2026-05-27T09:51:37.954+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 44 for task gold_aggregate ('str' object has no attribute 'mkdir'; 470)
+[2026-05-27T09:51:38.001+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-05-27T09:51:38.031+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-05-27T09:51:38.035+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

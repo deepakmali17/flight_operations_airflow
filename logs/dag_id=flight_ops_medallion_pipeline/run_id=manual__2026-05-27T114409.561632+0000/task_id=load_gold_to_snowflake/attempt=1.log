@@ -1,0 +1,23 @@
+[2026-05-27T11:44:36.615+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-05-27T11:44:36.668+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: flight_ops_medallion_pipeline.load_gold_to_snowflake manual__2026-05-27T11:44:09.561632+00:00 [queued]>
+[2026-05-27T11:44:36.683+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: flight_ops_medallion_pipeline.load_gold_to_snowflake manual__2026-05-27T11:44:09.561632+00:00 [queued]>
+[2026-05-27T11:44:36.685+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-05-27T11:44:36.703+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_gold_to_snowflake> on 2026-05-27 11:44:09.561632+00:00
+[2026-05-27T11:44:36.718+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'flight_ops_medallion_pipeline', 'load_gold_to_snowflake', 'manual__2026-05-27T11:44:09.561632+00:00', '--job-id', '104', '--raw', '--subdir', 'DAGS_FOLDER/flight_pipeline.py', '--cfg-path', '/tmp/tmp25epwv91']
+[2026-05-27T11:44:36.726+0000] {standard_task_runner.py:91} INFO - Job 104: Subtask load_gold_to_snowflake
+[2026-05-27T11:44:36.731+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62 DeprecationWarning: This process (pid=2044) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-05-27T11:44:36.733+0000] {standard_task_runner.py:64} INFO - Started process 2062 to run task
+[2026-05-27T11:44:36.814+0000] {task_command.py:426} INFO - Running <TaskInstance: flight_ops_medallion_pipeline.load_gold_to_snowflake manual__2026-05-27T11:44:09.561632+00:00 [running]> on host f59e62180610
+[2026-05-27T11:44:37.027+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='flight_ops_medallion_pipeline' AIRFLOW_CTX_TASK_ID='load_gold_to_snowflake' AIRFLOW_CTX_EXECUTION_DATE='2026-05-27T11:44:09.561632+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-05-27T11:44:09.561632+00:00'
+[2026-05-27T11:44:37.029+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-05-27T11:44:37.104+0000] {base.py:84} INFO - Using connection ID 'flight_snowflake' for task execution.
+[2026-05-27T11:44:37.107+0000] {connection.py:408} INFO - Snowflake Connector for Python Version: 3.11.0, Python Version: 3.12.4, Platform: Linux-6.6.114.1-microsoft-standard-WSL2-x86_64-with-glibc2.36
+[2026-05-27T11:44:37.110+0000] {connection.py:1258} INFO - This connection is in OCSP Fail Open Mode. TLS Certificates would be checked for validity and revocation status. Any other Certificate Revocation related exceptions or OCSP Responder failures would be disregarded in favor of connectivity.
+[2026-05-27T11:45:31.177+0000] {connection.py:773} INFO - closed
+[2026-05-27T11:45:31.252+0000] {connection.py:779} INFO - No async queries seem to be running, deleting session
+[2026-05-27T11:45:31.320+0000] {python.py:237} INFO - Done. Returned value was: None
+[2026-05-27T11:45:31.323+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-05-27T11:45:31.359+0000] {taskinstance.py:1206} INFO - Marking task as SUCCESS. dag_id=flight_ops_medallion_pipeline, task_id=load_gold_to_snowflake, run_id=manual__2026-05-27T11:44:09.561632+00:00, execution_date=20260527T114409, start_date=20260527T114436, end_date=20260527T114531
+[2026-05-27T11:45:31.438+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 0
+[2026-05-27T11:45:31.486+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-05-27T11:45:31.493+0000] {local_task_job_runner.py:222} INFO - ::endgroup::

@@ -1,0 +1,40 @@
+[2026-05-27T11:36:16.227+0000] {local_task_job_runner.py:120} INFO - ::group::Pre task execution logs
+[2026-05-27T11:36:16.300+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: flight_ops_medallion_pipeline.load_gold_to_snowflake manual__2026-05-27T11:35:42.871872+00:00 [queued]>
+[2026-05-27T11:36:16.325+0000] {taskinstance.py:2076} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: flight_ops_medallion_pipeline.load_gold_to_snowflake manual__2026-05-27T11:35:42.871872+00:00 [queued]>
+[2026-05-27T11:36:16.333+0000] {taskinstance.py:2306} INFO - Starting attempt 1 of 1
+[2026-05-27T11:36:16.356+0000] {taskinstance.py:2330} INFO - Executing <Task(PythonOperator): load_gold_to_snowflake> on 2026-05-27 11:35:42.871872+00:00
+[2026-05-27T11:36:16.378+0000] {standard_task_runner.py:90} INFO - Running: ['***', 'tasks', 'run', 'flight_ops_medallion_pipeline', 'load_gold_to_snowflake', 'manual__2026-05-27T11:35:42.871872+00:00', '--job-id', '88', '--raw', '--subdir', 'DAGS_FOLDER/flight_pipeline.py', '--cfg-path', '/tmp/tmp9xm723d6']
+[2026-05-27T11:36:16.383+0000] {standard_task_runner.py:91} INFO - Job 88: Subtask load_gold_to_snowflake
+[2026-05-27T11:36:16.386+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:62 DeprecationWarning: This process (pid=1692) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-05-27T11:36:16.388+0000] {standard_task_runner.py:64} INFO - Started process 1710 to run task
+[2026-05-27T11:36:16.482+0000] {task_command.py:426} INFO - Running <TaskInstance: flight_ops_medallion_pipeline.load_gold_to_snowflake manual__2026-05-27T11:35:42.871872+00:00 [running]> on host f59e62180610
+[2026-05-27T11:36:16.654+0000] {taskinstance.py:2648} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='flight_ops_medallion_pipeline' AIRFLOW_CTX_TASK_ID='load_gold_to_snowflake' AIRFLOW_CTX_EXECUTION_DATE='2026-05-27T11:35:42.871872+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-05-27T11:35:42.871872+00:00'
+[2026-05-27T11:36:16.656+0000] {taskinstance.py:430} INFO - ::endgroup::
+[2026-05-27T11:36:16.731+0000] {base.py:84} INFO - Using connection ID 'flight_snowflake' for task execution.
+[2026-05-27T11:36:16.733+0000] {taskinstance.py:441} INFO - ::group::Post task execution logs
+[2026-05-27T11:36:16.734+0000] {taskinstance.py:2905} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 465, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 432, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 401, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 235, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 252, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/scripts/load_gold_to_snowflake.py", line 22, in load_gold_to_snowflake
+    database=conn.extra.dejson.get("database"),
+             ^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'dejson'
+[2026-05-27T11:36:16.758+0000] {taskinstance.py:1206} INFO - Marking task as FAILED. dag_id=flight_ops_medallion_pipeline, task_id=load_gold_to_snowflake, run_id=manual__2026-05-27T11:35:42.871872+00:00, execution_date=20260527T113542, start_date=20260527T113616, end_date=20260527T113616
+[2026-05-27T11:36:16.778+0000] {standard_task_runner.py:110} ERROR - Failed to execute job 88 for task load_gold_to_snowflake ('str' object has no attribute 'dejson'; 1710)
+[2026-05-27T11:36:16.807+0000] {local_task_job_runner.py:243} INFO - Task exited with return code 1
+[2026-05-27T11:36:16.837+0000] {taskinstance.py:3503} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-05-27T11:36:16.842+0000] {local_task_job_runner.py:222} INFO - ::endgroup::
